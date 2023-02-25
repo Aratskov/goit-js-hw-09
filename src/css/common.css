@@ -21,9 +21,7 @@ button{
 cursor: pointer;
 height: 40px;
 min-width: 160px;
-color: #000;
-/* background-color: #FF6C00;
-border: 1px solid #FF6C00; */
+color: #000000;
 border-radius: 25px;
 }
 
@@ -38,7 +36,6 @@ border-radius: 25px;
 display: flex;
 align-items: center;
 justify-content: center;
-/* gap:20px; */
 column-gap: 20px;
 font-size: 45px;
 }

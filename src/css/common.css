@@ -45,3 +45,8 @@ font-size: 45px;
 flex-direction: column-reverse;
 align-items: center;
 }
+
+.form input{
+height: 40px;
+margin-right: 20px;
+}

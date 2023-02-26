@@ -11,19 +11,17 @@ function onClick(event) {
   const step = +el.step.value;
   const amount = +el.amount.value;
 
-  for(let position = 1; position <= amount;position++ ){
+  for (let position = 1; position <= amount; position++) {
     createPromise(position, delay)
-    .then(resolve => {
-      Notify.success(resolve);
-    })
-    .catch(reject=> {
-      Notify.failure(reject);
-    });
-    delay += step
+      .then(resolve => {
+        Notify.success(resolve);
+      })
+      .catch(reject => {
+        Notify.failure(reject);
+      });
+    delay += step;
   }
 }
-
-
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;

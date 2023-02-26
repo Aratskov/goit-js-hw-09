@@ -5,10 +5,18 @@ form.addEventListener('submit', onClick);
 
 function onClick(event) {
   event.preventDefault();
-  let position = 0;
+  let position = 1;
   let delay = +form.elements.delay.value;
   const step = +form.elements.step.value;
   const amount = +form.elements.amount.value;
+  createPromise(position, delay)
+    .then(e => {
+      Notify.success(e);
+    })
+    .catch(b => {
+      Notify.failure(b);
+    });
+  delay += step;
   const intervalId = setInterval(() => {
     position += 1;
     if (position === amount) {

@@ -11,33 +11,32 @@ function onClick(event) {
   let delay = +el.delay.value;
   const step = +el.step.value;
   const amount = +el.amount.value;
-  
+
   result(position, delay);
   let secondStep = delay + step;
-  render(position,amount,secondStep,step)
+  render(position, amount, secondStep, step);
 }
 
-
-const render =(position,amount,secondStep,step) =>{
-  const intervalId =
-  setInterval(() => {
-    console.log(amount)
-    console.log(position)
-  position += 1;
-  if (position == amount) {
-    clearInterval(intervalId);
-  }
-  result(position, secondStep);
-  secondStep += step;
-}, step)};
+const render = (position, amount, secondStep, step) => {
+  const intervalId = setInterval(() => {
+    console.log(amount);
+    console.log(position);
+    position += 1;
+    if (position == amount) {
+      clearInterval(intervalId);
+    }
+    result(position, secondStep);
+    secondStep += step;
+  }, step);
+};
 
 const result = (position, delay) => {
   createPromise(position, delay)
-    .then(e => {
-      Notify.success(e);
+    .then(resolve => {
+      Notify.success(resolve);
     })
-    .catch(b => {
-      Notify.failure(b);
+    .catch(reject=> {
+      Notify.failure(reject);
     });
 };
 

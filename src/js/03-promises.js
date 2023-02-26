@@ -1,29 +1,35 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const form = document.querySelector('.form');
-const intervalId = null;
-
 form.addEventListener('submit', onClick);
 
 function onClick(event) {
   event.preventDefault();
   let position = 1;
-  let delay = +form.elements.delay.value;
-  const step = +form.elements.step.value;
-  const amount = +form.elements.amount.value;
 
+  const el = form.elements;
+  let delay = +el.delay.value;
+  const step = +el.step.value;
+  const amount = +el.amount.value;
+  
   result(position, delay);
-
-  secondStep = delay + step;
-  const intervalId = setInterval(() => {
-    position += 1;
-    if (position === amount) {
-      clearInterval(intervalId);
-    }
-    result(position, secondStep);
-    secondStep += step;
-  }, step);
+  let secondStep = delay + step;
+  render(position,amount,secondStep,step)
 }
+
+
+const render =(position,amount,secondStep,step) =>{
+  const intervalId =
+  setInterval(() => {
+    console.log(amount)
+    console.log(position)
+  position += 1;
+  if (position == amount) {
+    clearInterval(intervalId);
+  }
+  result(position, secondStep);
+  secondStep += step;
+}, step)};
 
 const result = (position, delay) => {
   createPromise(position, delay)

@@ -37,10 +37,10 @@ class Timer {
     this.intervalId = setInterval(() => {
       const currentTime = new Date();
       const deltaTime = value - currentTime;
-      if (deltaTime <= 0) {
-        clearInterval(this.intervalId);
+      if (deltaTime < 0) {
         buttonStart.disabled = true;
         Notify.success('Time is up!');
+        clearInterval(this.intervalId);
         return;
       }
       const time = convertMs(deltaTime);
